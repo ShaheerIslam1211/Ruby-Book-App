@@ -1,0 +1,67 @@
+<script type="text/javascript" src="https://js.stripe.com/v3/"></script>
+<script src="https://checkout.stripe.com/checkout.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<h2> Books Description </h2>
+
+<div style="margin-top: 20px">
+  <h5 style="color: indigo"> Book Title: </h5>
+  <%= @book.title %>
+
+  <br> <br>
+
+  <h5 style="color: chocolate"> Book Description: </h5>
+  <%= @book.description %>
+  <br> <br>
+
+  <h5 style="color: mediumturquoise;"> Book Status: </h5>
+  <%= @book.published %>
+  <br> <br>
+
+  <h5 style="color: rgba(4, 8, 90, 1.0);"> Book Price: </h5>
+  <%= @book.price %>
+  <br> <br>
+
+ <h5 style="color: rgba(34, 78, 19, 1.0);"> Book Publisher: </h5>
+  <%= @book.publisher %>
+  <br> <br>
+
+  <h5 style="color: rgba(52, 90, 4, 1.0);"> Book Genre: </h5>
+  <%= @book.genre %>
+  <br> <br>
+
+  <h5 style="color: darkslategrey"> Book Image: </h5>
+  <% if @book.image.attached? %>
+    <image src="<%=(url_for(@book.image))%>" style= 'width: 20%'> </image>
+    <% end %>
+  <br> <br>
+
+  <h5> Book Tags:</h5>
+  <% @book.tags.each do |tag|%>
+    <div class="btn btn-primary"> <%= tag.name %> </div>
+  <%end %>
+
+  <br> <br>
+  <h5 style=" font-size: 35px; background: -webkit-linear-gradient(#eee, #333); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: bold"> Want to purchase this "<%= @book.title %>" Book? </h5>
+  <button id="process-transaction" data-book-id="<%= @book.id %>" style= "font-size: 22px; background-color: #3EECAC; background-image: linear-gradient(19deg, #3EECAC 0%, #EE74E1 100%);">Purchase Book</button>
+</div>
+
+<script>
+  // AJAX request
+  $(document).on('click', '#process-transaction', function(event) {
+    event.preventDefault();
+    debugger;
+    var bookId = $(this).data('book-id');
+    $.ajax({
+      type: 'GET',
+      url: '/create_session/' + bookId,
+      contentType: "application/json",
+      dataType: "json"
+    })
+    .done(function(data) {
+      debugger;
+      var stripe = Stripe("<%=  Rails.configuration.stripe[:publishable_key] %>");
+      stripe.redirectToCheckout({ sessionId: data.session_id });
+    });
+  });
+</script>

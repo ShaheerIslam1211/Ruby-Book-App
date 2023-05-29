@@ -1,0 +1,46 @@
+<h1> Books Assign Tags Page </h1>
+
+
+<%= form_tag assign_book_tags_path, method: :post do |form| %>
+
+  <%= select_tag(:book_id, options_for_select(@books.map{|b| [b.title,b.id]})) %>
+  <br>  <br>
+
+  <%= select_tag(:tag_id, options_for_select(@tags.map{|t| [t.name,t.id]})) %> <br> <br>
+  <%= submit_tag "submit", class: "btn btn-primary btn-block" %>
+
+<% end %>
+
+
+
+<!--<div>-->
+<!--<select class="form-select" aria-label="Default select example" style="width: 180px">-->
+<!--  <option> Books </option>-->
+    <%# @books.each do |i| %>
+<!--    <option>-->
+      <%#= i.title %>
+<!--    </option>-->
+    <%# end %>
+<!--</select>-->
+<!--</div>-->
+
+<!--<br> <br>-->
+
+
+<!--<div>-->
+<!--<select class="form-select" aria-label="Default select example" style="width: 150px">-->
+<!--  <option>Assign Tags </option>-->
+
+    <%# @tags.each do |i| %>
+<!--    <option>-->
+      <%#= i.name %>
+<!--    </option>-->
+    <%# end %>
+
+<!--</select>-->
+<!--</div>-->
+
+<!--<div class="d-grid gap-2 d-md-flex justify-content-md-end">-->
+<!--  <button class="btn btn-primary me-md-2" type="button">Submit</button>-->
+<!--</div>-->
+

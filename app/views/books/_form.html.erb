@@ -1,0 +1,30 @@
+<%= form_for @book do |f| %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title, autofocus: true, autocomplete: "title" %>
+  </div>
+  <br>
+
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description, autofocus: true, autocomplete: "description" %>
+  </div>
+  <br>
+
+  <div class="field">
+    <%= f.label :published %><br />
+    <%= f.text_field :published, autocomplete: "published" %>
+  </div>
+  <br>
+
+  <div class="field">
+    <%= f.label :book_image %><br />
+    <%= f.file_field :image, autocomplete: "image" %>
+  </div>
+
+   <br>
+  <div class="actions btn btn-info" style="width: 18%">
+    <%= f.submit%>
+  </div>
+<% end %>

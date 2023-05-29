@@ -1,0 +1,35 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require jquery-ui
+ *= require jquery-ui/datepicker
+ *= require jquery-ui/draggable
+ *= require jquery-ui/resizable
+ *= require jquery-ui/selectable
+ *= require jquery-ui/sortable
+
+
+ *= require jquery-ui/accordion
+ *= require jquery-ui/autocomplete
+ *= require jquery-ui/button
+ *= require jquery-ui/datepicker
+ *= require jquery-ui/dialog
+ *= require jquery-ui/menu
+ *= require jquery-ui/progressbar
+ *= require jquery-ui/selectmenu
+ *= require jquery-ui/slider
+ *= require jquery-ui/spinner
+ *= require jquery-ui/tabs
+ *= require jquery-ui/tooltip
+ */
