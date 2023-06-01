@@ -1,5 +1,4 @@
 <%= form_for @book do |f| %>
-
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title, autofocus: true, autocomplete: "title" %>
@@ -24,7 +23,7 @@
   </div>
 
    <br>
-  <div class="actions btn btn-info" style="width: 18%">
-    <%= f.submit%>
+  <div>
+   <%= f.submit "Submit", class: "btn btn-primary", style: "background-color: #F4D03F; background-image: linear-gradient(132deg, #F4D03F 0%, #16A085 100%); width: 111px;" %>
   </div>
 <% end %>

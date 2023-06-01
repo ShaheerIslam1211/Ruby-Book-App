@@ -1,0 +1,43 @@
+# .pronto.yml
+verbose: true
+
+# Runners configuration
+runners:
+  # RuboCop runner for Ruby code
+  rubocop:
+    enabled: true
+    # Specify any additional RuboCop options or configuration files
+    # For example:
+    # options: ["--display-cop-names", "--config .rubocop.yml"]
+
+  # Reek runner for Ruby code
+  reek:
+    enabled: true
+    # Specify any additional Reek options or configuration files
+    # For example:
+    # options: ["--config .reek.yml"]
+
+  # RailsBestPractices runner for Rails code
+  rails_best_practices:
+    enabled: true
+    # Specify any additional RailsBestPractices options or configuration files
+    # For example:
+    # options: ["--config .rails_best_practices.yml"]
+
+  # Brakeman runner for Rails security vulnerabilities
+  brakeman:
+    enabled: true
+    # Specify any additional Brakeman options or configuration files
+    # For example:
+    # options: ["--skip-files vendor/**/*"]
+
+  # Additional runners...
+
+# Ignored files and directories
+ignored_files:
+  - 'db/schema.rb'
+  - 'config/**/*'
+
+# Maximum number of PR comments to be made by Pronto
+max_warnings: 50
+

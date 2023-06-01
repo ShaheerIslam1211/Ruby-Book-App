@@ -15,4 +15,11 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   root 'books#index'
+
+
+  get '/accounts/devise/sessions/new.css', to: redirect('/devise/sessions/new.css')
+  get '/accounts/header.css', to: redirect('assets/stylesheets/header.css')
+  get '/accounts/footer.css', to: redirect('assets/stylesheets/footer.css')
+  # get '/accounts/images/icon/best.png', to: redirect('/path/to/best.png')
+
 end

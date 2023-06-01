@@ -1,0 +1,46 @@
+# inherit_from: .rubocop_todo.yml
+
+require: rubocop-rails
+AllCops:
+  TargetRubyVersion: 2.7
+  NewCops: enable
+  Exclude:
+   - 'bin/*'
+   - 'db/seeds.rb'
+   - 'db/schema.rb'
+   - 'vendor/bundle/**/*'
+   - 'config/application.rb'
+   - 'config/routes.rb'
+   - 'config/environments/*'
+   - 'config/initializers/*'
+   - 'db/migrate/*'
+   - 'test/test_helper.rb'
+   - '**/spec/spec_helper.rb'
+   - '**/spec/rails_helper.rb'
+   - '**/Rakefile'
+   - '**/lib/**/*'
+   - 'tmp/**/*'
+
+Bundler/OrderedGems:
+  Exclude:
+    - 'Gemfile'
+
+Metrics/ClassLength:
+  CountComments: false  # count full line comments?
+
+Metrics/ModuleLength:
+  CountComments: false  # count full line comments?
+  Max: 100
+
+Metrics/MethodLength:
+  CountComments: false  # count full line comments?
+  Max: 12
+
+Style/AsciiComments:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 80
+
+Metrics/BlockLength:
+  ExcludedMethods: ['describe', 'context', 'resource']

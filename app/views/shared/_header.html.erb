@@ -1,58 +1,104 @@
-<!DOCTYPE html>
-<html>
-<body>
+<head>
+  <%= stylesheet_link_tag 'header' %>
+</head>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#" style="color:#B00100 ">Books</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <%= link_to "Books", root_path, class:"nav-link active" %>
-        </li>
-
-        <li class="nav-item">
-          <%= link_to "Add Books", new_book_path, class: "nav-link" %>
-        </li>
-
-
-        <!--
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Dropdown </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li> <%= link_to "Sign Up", new_author_registration_path, class:"dropdown-item" %> </li>
-            <li> <%= link_to "Sign In", new_author_session_path, class:"dropdown-item" %> </li>
-            <li><hr class="dropdown-divider"> </li>
-            <li> <%= link_to "Edit (Author Registration)", edit_author_registration_path, class:"nav-item" %> </li>
-
-          </ul>
-
-        </li> -->
-
-        <li class="nav-item">
-          <%= link_to "Edit (Author Registration)", edit_author_registration_path, class:"nav-link" %>
-        </li>
-
-        <li class="nav-item" > </li>
-        <li> <%= link_to 'Logout', destroy_author_session_path, method: :delete, class:"nav-link" %> </li>
-      </ul>
-
-      <form class="d-flex">
-        <!--<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
-        <!--<div style="width: 40%; margin-left: 80%; margin-top: -55px">-->
-
-          <%= form_tag(books_path, :method => "get", id: "search-form") do %>
-            <%= text_field_tag :search, params[:search], placeholder: "Search Books", class: "form-control me-2"%>
-           <!-- <div style="width: 35%; margin-top: 10px;"> --> <%= submit_tag "Search", class:"btn btn-outline-success" %>
-          <% end %>
-
-      </form>
-
+<div class="p-3 bg-dark text-white">
+  <div class="flexMain">
+    <div class="flex2 text-center">
+      <div><strong>Welcome to Book Application Website</strong></div>
     </div>
   </div>
-</nav>
-</body>
-</html>
+</div>
+
+<div id="menuHolder">
+  <div role="navigation" class="sticky-top border-bottom border-top" id="mainNavigation">
+    <div class="flexMain">
+      <div class="flex2">
+        <button class="whiteLink siteLink" style="border-right:1px solid #eaeaea" onclick="menuToggle()">
+          <%= fa_icon("bars") %> <span> MENU </span>
+        </button>
+      </div>
+      <div class="flex3 text-center" id="siteBrand">
+        BOOK PURCHASING APPLICATION
+      </div>
+
+      <div class="flex2 text-end d-block d-md-none">
+        <button class="whiteLink siteLink"><i class="fas fa-search"></i></button>
+      </div>
+
+      <div class="flex2 text-end d-none d-md-block">
+        <div style="display: flex; flex-wrap: wrap;">
+          <form action="<%= new_author_registration_path %>" method="post" style="flex: 5;">
+            <%= csrf_meta_tags %>
+            <%= link_to "REGISTER", new_author_registration_path, class: "whiteLink siteLink", data: { turbolinks: false } %>
+          </form>
+
+          <form action="<%= author_session_path %>" method="post" style="flex: 1;">
+            <%= csrf_meta_tags %>
+            <%= link_to "LOGIN", new_author_session_path, class: "blackLink siteLink", data: { turbolinks: false } %>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="menuDrawer">
+    <div class="p-4 border-bottom">
+      <div class='row'>
+        <div class="col">
+          <select class="noStyle">
+            <option value="english">English</option>
+            <option value="spanish">Spanish</option>
+            <option value="french">French</option>
+            <option value="italian">Italian</option>
+          </select>
+        </div>
+        <div class="col text-end ">
+          <%= fa_icon('times', class: 'menuToggle()') %>
+        </div>
+      </div>
+    </div>
+    <div>
+      <%= link_to(root_path, class: "nav-menu-item") do %>
+        <%= fa_icon("home") %>
+        Home
+      <% end %>
+
+      <%= link_to(new_book_path, class: "nav-menu-item") do %>
+        <%= fa_icon("book") %>
+        Add Books
+      <% end %>
+
+      <%= link_to(edit_author_registration_path, class: "nav-menu-item") do %>
+        <%= fa_icon("users") %>
+        Edit (Author Registration)
+      <% end %>
+
+      <%= link_to(destroy_author_session_path, method: :delete, class: "nav-menu-item") do %>
+        <%= fa_icon("sign-out") %>
+        Logout
+      <% end %>
+
+      <form class="d-flex">
+        <%= form_tag(books_path, :method => "get", id: "search-form") do %>
+          <%= text_field_tag :search, params[:search], placeholder: "Search Books", class: "form-control me-2"%>
+          <%= submit_tag "Search", class:"btn btn-outline-success", style: "width: auto"%>
+        <% end %>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var menuHolder = document.getElementById('menuHolder')
+  var siteBrand = document.getElementById('siteBrand')
+  function menuToggle(){
+    if(menuHolder.className === "drawMenu") menuHolder.className = ""
+    else menuHolder.className = "drawMenu"
+  }
+  if(window.innerWidth < 426) siteBrand.innerHTML = "MAS"
+  window.onresize = function(){
+    if(window.innerWidth < 420) siteBrand.innerHTML = "MAS"
+    else siteBrand.innerHTML = "BOOK PURCHASING APPLICATION"
+  }
+</script>
