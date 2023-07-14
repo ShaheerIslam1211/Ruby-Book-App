@@ -1,11 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe Author, type: :model do
-  let(:author) { create(:author) }
+RSpec.describe User, type: :model do
+  let(:user) { create(:user) }
 
   describe 'associations' do
     it 'should valid and create blogs' do
-
       expect(author).to be_valid
       expect(author.save).to eql true
       # it { should have_many(:books) }
