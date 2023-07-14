@@ -7,8 +7,8 @@ RSpec.describe User, type: :model do
 
   describe 'associations' do
     it 'should valid and create blogs' do
-      expect(author).to be_valid
-      expect(author.save).to eql true
+      expect(user).to be_valid
+      expect(user.save).to eql true
       # it { should have_many(:books) }
     end
   end
