@@ -9,6 +9,7 @@ module StripeWrapper
                                  payment_intent_suffix:, customer_email:,
                                  billing_address:, submit_type:,
                                  success_url:, cancel_url:)
+
       Stripe::Checkout::Session.create({
         payment_method_types: ['card'],
         line_items: [{

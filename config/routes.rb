@@ -1,25 +1,31 @@
+# == Route Map
+#
+
 Rails.application.routes.draw do
-  devise_for :authors, controllers: { registrations: 'authors/registrations' }, path: 'accounts',
-                       path_names: { sign_in: 'login', sign_up: 'register', sign_out: 'logout',
-                                     password: 'secret', confirmation: 'verification' }
+  devise_for :users, controllers: { registrations: "users/registrations",
+                                    sessions: "users/sessions",
+                                    passwords: "users/passwords", 
+                                    devise_authy: "users/deviseauthycustoms",
+                                    confirmations: "users/confirmations",
+                                    unlocks: "users/unlocks" 
+                                  },
+                                   path: 'accounts', path_names: { sign_in: 'login',
+                                                                   sign_up: 'register',
+                                                                   sign_out: 'logout',
+                                                                   password: 'secret',
+                                                                   confirmation: 'verification'
+                                                                  }
 
   resources :books
   get 'assign_tags' => 'books#assign_tags'
   post 'assign_book_tags' => 'books#assign_book_tags'
   delete '/books/:id' => 'books#destroy'
-  get '/create_session/:id' => 'books#create_session', as: :create_session
+  get '/create_session/:id', to: 'books#create_session', as: :create_session
+
+  get '/:id/process_book_payment', to: 'books#process_book_payment', as: :process_book_payment
+  get '/thanks', to: 'books#thanks', as: 'thanks'
+
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
-
   root 'books#index'
-
-
-  get '/accounts/devise/sessions/new.css', to: redirect('/devise/sessions/new.css')
-  get '/accounts/header.css', to: redirect('assets/stylesheets/header.css')
-  get '/accounts/footer.css', to: redirect('assets/stylesheets/footer.css')
-  # get '/accounts/images/icon/best.png', to: redirect('/path/to/best.png')
-
 end

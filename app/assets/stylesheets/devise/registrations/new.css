@@ -13,6 +13,7 @@
 input[type="submit"].btn-block {
 	width: 100%;
 }
+
 input[type=text] {
   width: 100% !important;
   padding: 12px 20px !important;
@@ -129,13 +130,13 @@ h2 {
 }
 .content .contents .form-group.first,
 .content .bg .form-group.first {
-	border-top-left-radius: 7px;
-	border-top-right-radius: 7px;
+	border-top-left-radius: 7px !important;
+	border-top-right-radius: 7px !important;
 }
 .content .contents .form-group.last,
 .content .bg .form-group.last {
-	border-bottom-left-radius: 7px;
-	border-bottom-right-radius: 7px;
+	border-bottom-left-radius: 7px !important;
+	border-bottom-right-radius: 7px !important;
 }
 .content .contents .form-group label,
 .content .bg .form-group label {
@@ -154,10 +155,10 @@ h2 {
 }
 .content .contents .form-control,
 .content .bg .form-control {
-	border: none;
+	border: none !important;
 	padding: 0;
 	font-size: 20px;
-	border-radius: 0;
+	border-radius: 0 !important;
 }
 .content .contents .form-control:active,
 .content .contents .form-control:focus,
@@ -183,7 +184,8 @@ h2 {
 	padding-left: 30px;
 	padding-right: 30px;
 }
-
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
 .content .forgot-pass {
 	position: relative;
 	top: 2px;
@@ -319,13 +321,31 @@ h2 {
 	opacity: 0.2;
 }
 
-#password{
+#firstname{
+	width: auto !important;
+	background: #edf2f5 !important;
+	border-bottom: 1px solid #e6edf1 !important;
+}
+
+#lastname{
 	width: auto !important;
 	background: #edf2f5 !important;
 	border-bottom: 1px solid #e6edf1 !important;
 }
 
 #useremail{
+	width: auto !important;
+	background: #edf2f5 !important;
+	border-bottom: 1px solid #e6edf1 !important;
+}
+
+#password{
+	width: auto !important;
+	background: #edf2f5 !important;
+	border-bottom: 1px solid #e6edf1 !important;
+}
+
+#passwordconfirmation{
 	width: auto !important;
 	background: #edf2f5 !important;
 	border-bottom: 1px solid #e6edf1 !important;

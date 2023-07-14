@@ -1,60 +1,85 @@
-<div class="edit-book-page">
-  <h2>Edit <%= resource_name.to_s.humanize %></h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%= stylesheet_link_tag 'devise/registrations/edit.css' %>
+  <title>Edit User</title>
+</head>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
+ <div class="container bootstrap snippets bootdey">
+    <h1 class="text-primary">Edit Profile</h1>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true }) do |f| %>
 
-    <div class="form-field">
-      <%= f.label :first_name %>
-      <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
-    </div>
-
-    <div class="form-field">
-      <%= f.label :last_name %>
-      <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
-    </div>
-
-    <div class="form-field">
-      <%= f.label :email %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <div class="confirmation-info">
-        Currently waiting confirmation for: <%= resource.unconfirmed_email %>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="text-center">
+        <% if @user.image.attached? %>
+          <img class="avatar changeimg" src="<%= url_for(@user.image) %>">
+       <% else %>
+          <div class="field">
+            <%= f.label :image, "User Image" %><br />
+            <%= f.file_field :image, autocomplete: "Image", class: "hidden-file-input", onchange: "handleFileSelect(event)" %>
+            <label for="hidden-file-input" class="file-input-label">Click to upload</label>
+          </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
+    <div class="col-md-9 personal-info">
+      <h3>Personal info</h3>
+      <div class="form-horizontal">
+        <%= render "devise/shared/error_messages", resource: resource %>
 
-    <div class="form-field">
-      <%= f.label :password %>
-      <i>(leave blank if you don't want to change it)</i><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
-      <% if @minimum_password_length %>
-        <br />
-        <em><%= @minimum_password_length %> characters minimum</em>
+        <div class="form-group">
+          <%= f.label :first_name %>
+          <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control", id: "firstname" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :last_name %>
+          <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "form-control", id: "lastname"%>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :email %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", id: "email" %>
+        </div>
+        
+        <div class="form-group">
+          <%= f.label :password %>
+          <i>(leave blank if you don't want to change it)</i><br/>
+          <%= f.password_field :password, autocomplete: "new-password", class: "form-control", id: "password" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", id: "newpassword"%>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :current_password %>
+          <i>(we need your current password to confirm your changes)</i><br />
+          <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control", id: "currentpassword" %>
+        </div>
+        
+        <%= f.submit "Save", class: "btn btn-block btn-success" %>
+        <%= link_to "Cancel", :back, class: 'btn btn-block btn-secondary' %>
       <% end %>
+      </div>
     </div>
-
-    <div class="form-field">
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    </div>
-
-    <div class="form-field">
-      <%= f.label :current_password %>
-      <i>(we need your current password to confirm your changes)</i><br />
-      <%= f.password_field :current_password, autocomplete: "current-password" %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit "Update", class: "btn btn-primary", style: "background-color: #74EBD5; background-image: linear-gradient(90deg, #74EBD5 0%, #9FACE6 100%); width: 120px; margin-top: 20px;" %>
-    </div>
-  <% end %>
-
-  <div class="cancel-account-section">
-    <h3>Want to Cancel Account?</h3>
-    <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), { class: "btn btn-primary", style: "background-color: #74EBD5; background-image: linear-gradient(90deg, #74EBD5 0%, #9FACE6 100%); width: 130px;", data: { confirm: "Are you sure?" }, method: :delete } %></p>
   </div>
-
-  <%= link_to "Back", :back %>
 </div>
+
+<script>
+  function handleFileSelect(event) {
+    // Handle the file selection here
+    var file = event.target.files[0];
+    console.log("Selected file:", file);
+  }
+
+  // Trigger the file input when the "changeimg" element is clicked
+  debugger;
+  var changeimgElement = document.querySelector('.changeimg');
+  var hiddenFileInputElement = document.querySelector('.hidden-file-input');
+  changeimgElement.addEventListener('click', function() {
+    hiddenFileInputElement.click();
+  });
+</script>

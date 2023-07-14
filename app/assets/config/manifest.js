@@ -2,4 +2,5 @@
 //= link_directory ../stylesheets .css
 //= link_tree ../../javascript .js
 //= link_tree ../../../vendor/javascript .js
+//= link_directory ../stylesheets/devise/registrations .css
 //= link_directory ../stylesheets/devise/sessions .css

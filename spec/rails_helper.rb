@@ -2,18 +2,25 @@
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
+
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
+require 'pry'
+require 'spec_helper'
+
 # Add additional requires below this line. Rails is not loaded until this point!
 require File.expand_path('../config/environment', __dir__)
 require 'rspec/rails'
 
 # Add additional requires and configuration options here...
 require 'factory_bot_rails'
+require 'undercover'
+require 'capybara/rspec'
+require 'capybara-screenshot/rspec'
 
-FactoryBot.definition_file_paths = [File.expand_path('spec/factories', __dir__)]
-FactoryBot.find_definitions
+# FactoryBot.definition_file_paths = [File.expand_path('spec/factories', __dir__)]
+# FactoryBot.find_definitions
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -28,6 +35,9 @@ FactoryBot.find_definitions
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
+
+Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
+
 # Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
 
 # Checks for pending migrations and applies them before tests are run.
@@ -37,6 +47,7 @@ begin
 rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
+
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -69,15 +80,19 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
-  # Database cleaner
-  config.before(:suite) do
-    DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.clean_with(:truncation)
+  # arbitrary gems may also be filtered via:
+  # config.filter_gems_from_backtrace("gem name")
+  config.include FactoryBot::Syntax::Methods
+
+  # https://blog.eq8.eu/til/factory-bot-trait-for-active-storange-has_attached.html
+  FactoryBot::SyntaxRunner.class_eval do
+    include ActionDispatch::TestProcess
   end
 
-  config.around(:each) do |example|
-    DatabaseCleaner.cleaning do
-      example.run
+  Shoulda::Matchers.configure do |config|
+    config.integrate do |with|
+      with.test_framework :rspec
+      with.library :rails
     end
   end
 end

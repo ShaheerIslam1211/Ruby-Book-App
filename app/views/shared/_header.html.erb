@@ -28,14 +28,14 @@
 
       <div class="flex2 text-end d-none d-md-block">
         <div style="display: flex; flex-wrap: wrap;">
-          <form action="<%= new_author_registration_path %>" method="post" style="flex: 5;">
+          <form action="<%= new_user_registration_path %>" method="post" style="flex: 5;">
             <%= csrf_meta_tags %>
-            <%= link_to "REGISTER", new_author_registration_path, class: "whiteLink siteLink", data: { turbolinks: false } %>
+            <%= link_to "REGISTER", new_user_registration_path, class: "whiteLink siteLink", data: { turbolinks: false } %>
           </form>
 
-          <form action="<%= author_session_path %>" method="post" style="flex: 1;">
+          <form action="<%= user_session_path %>" method="post" style="flex: 1;">
             <%= csrf_meta_tags %>
-            <%= link_to "LOGIN", new_author_session_path, class: "blackLink siteLink", data: { turbolinks: false } %>
+            <%= link_to "LOGIN", new_user_session_path, class: "blackLink siteLink", data: { turbolinks: false } %>
           </form>
         </div>
       </div>
@@ -69,14 +69,14 @@
         Add Books
       <% end %>
 
-      <%= link_to(edit_author_registration_path, class: "nav-menu-item") do %>
+      <%= link_to(edit_user_registration_path, class: "nav-menu-item") do %>
         <%= fa_icon("users") %>
         Edit (Author Registration)
       <% end %>
 
-      <%= link_to(destroy_author_session_path, method: :delete, class: "nav-menu-item") do %>
+      <%= button_to(destroy_user_session_path, method: :delete, class: "nav-menu-item") do %>
         <%= fa_icon("sign-out") %>
-        Logout
+        Sign out
       <% end %>
 
       <form class="d-flex">

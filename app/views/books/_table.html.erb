@@ -1,36 +1,33 @@
 <div class="table-responsive">
-<table class="table">
-  <thead>
-  <tr>
-    <th scope="col" style="color: darkviolet "> <b>Title </b></th>
-    <th scope="col" style="color: mediumturquoise "> <b> Published </b></th>
-    <th scope="col"> <b> CRUD </b> </th>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col" style="color: darkviolet "> <b>Title </b></th>
+      <th scope="col" style="color: mediumturquoise "> <b> Published </b></th>
+      <th scope="col"> <b> CRUD </b> </th>
 
-    <th scope="col" style="color: indigo "> <b> Books Tags </b></th>
-  </tr>
-  </thead>
+      <th scope="col" style="color: indigo "> <b> Books Tags </b></th>
+    </tr>
+    </thead>
 
-  <tbody>
-  <% @books.each do |data| %>
-  <tr>
-    <td><%= data.title %></td>
-    <td><%= data.published %></td>
-    <td>
-      <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-          <%= link_to 'Show', book_path(data), class: "btn btn-success" %>
-          <%= link_to 'Edit', edit_book_path(data), class: "btn btn-warning" %>
-          <%= link_to 'Destroy', book_path(data), :method => :delete, class: "btn btn-danger" %>
-      </div>
-    </td>
+    <tbody>
+      <% @books.each do |data| %>
+      <tr>
+        <td><%= data.title %></td>
+        <td><%= data.published %></td>
+        <td>
+          <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+              <%= link_to 'Show', book_path(data), class: "btn btn-success" %>
+              <%= link_to 'Edit', edit_book_path(data), class: "btn btn-warning" %>
+              <%= link_to 'Destroy', book_path(data), :method => :delete, class: "btn btn-danger" %>
+          </div>
+        </td>
 
-      <% data.tags.each do |t| %>
-      <td><button class="btn btn-dark"><%= t.name %></button></td>
-      <%end %>
-
-  </tr>
-  <tr>
-  </tr>
-  <% end %>
-  </tbody>
-</table>
+          <% data.tags.each do |t| %>
+          <td><button class="btn btn-dark"><%= t.name %></button></td>
+          <%end %>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
 </div>

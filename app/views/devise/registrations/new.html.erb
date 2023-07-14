@@ -1,270 +1,66 @@
-<!-- <h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
-
-
- -->
-
-<!-- 
 <!DOCTYPE html>
 <html lang="en">
-
+  <head>
+    <%= stylesheet_link_tag 'devise/registrations/new.css' %>
+    <title>Sign Up</title>
+  </head>
   <body>
-
-  <style type="text/css">
-    html,
-    body,
-    .vh-100 {
-      height: 100%;
-    }
-
-    .container {
-      height: 100%;
-    }
-
-    .row {
-      height: 100%;
-    }
-
-    .card {
-      width: 100%;
-    }
-
-    .container, .container-lg, .container-md, .container-sm, .container-xl {
-      max-width: 100%;
-    }
-  </style>
-
-
-    <section class="vh-100" style="background-color: #eee;">
-      <div class="container h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-          <div class="col-lg-12 col-xl-11">
-            <div class="card text-black" style="border-radius: 25px;">
-              <div class="card-body p-md-5">
-                <div class="row justify-content-center">
-                  <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-
-                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
-
-                    <form class="mx-1 mx-md-4">
-
-                      <div class="d-flex flex-row align-items-center mb-4">
-                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                        <div class="form-outline flex-fill mb-0">
-                          <input type="text" id="form3Example1c" class="form-control" />
-                          <label class="form-label" for="form3Example1c">Your Name</label>
-                        </div>
-                      </div>
-
-                      <div class="d-flex flex-row align-items-center mb-4">
-                        <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                        <div class="form-outline flex-fill mb-0">
-                          <input type="email" id="form3Example3c" class="form-control" />
-                          <label class="form-label" for="form3Example3c">Your Email</label>
-                        </div>
-                      </div>
-
-                      <div class="d-flex flex-row align-items-center mb-4">
-                        <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                        <div class="form-outline flex-fill mb-0">
-                          <input type="password" id="form3Example4c" class="form-control" />
-                          <label class="form-label" for="form3Example4c">Password</label>
-                        </div>
-                      </div>
-
-                      <div class="d-flex flex-row align-items-center mb-4">
-                        <i class="fas fa-key fa-lg me-3 fa-fw"></i>
-                        <div class="form-outline flex-fill mb-0">
-                          <input type="password" id="form3Example4cd" class="form-control" />
-                          <label class="form-label" for="form3Example4cd">Repeat your password</label>
-                        </div>
-                      </div>
-
-                      <div class="form-check d-flex justify-content-center mb-5">
-                        <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
-                        <label class="form-check-label" for="form2Example3">
-                          I agree all statements in <a href="#!">Terms of service</a>
-                        </label>
-                      </div>
-
-                      <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                        <button type="button" class="btn btn-primary btn-lg">Register</button>
-                      </div>
-
-                    </form>
-
-                  </div>
-                  <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
-                      class="img-fluid" alt="Sample image">
-
-                  </div>
-                </div>
-              </div>
-            </div>
+    <div class="content">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <%= image_tag("undraw_professor_8lrt.svg", alt: "Image", style: "max-width: 115%; height: 82%;") %>
           </div>
-        </div>
-      </div>
-    </section>
-  </body>
-</html> -->
-
-
-
-<!-- 
-
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
-
- -->
-
-
-
-
-
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <%= stylesheet_link_tag 'devise/sessions/new.css' %>
-  <title>Sign Up</title>
-</head>
-<body>
-  <div class="content">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <%= image_tag("undraw_remotely_2j6y.svg", alt: "Image", style: "max-width: 100%; height: auto;") %>
-        </div>
-        <div class="col-md-6 contents">
-          <div class="row justify-content-center">
-            <div class="col-md-8">
-              <div class="mb-4">
-                <h3>Sign Up</h3>
-                <p class="mb-4">
-                  Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.
-                </p>
-              </div>
-              <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-                <%= render "devise/shared/error_messages", resource: resource %>
-                <div class="form-group first">
-                  <%= f.label :first_name %>
-                  <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control", id: "firstname" %>
+          <div class="col-md-6 contents">
+            <div class="row justify-content-center">
+              <div class="col-md-8">
+                <div class="mb-4">
+                  <h3>Sign Up</h3>
+                  <p class="mb-4">
+                    Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.
+                  </p>
                 </div>
-                <div class="form-group first">
-                  <%= f.label :last_name %>
-                  <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "form-control", id: "lastname" %>
+                <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                  <%= render "devise/shared/error_messages", resource: resource %>
+                  <div class="form-group first">
+                    <%= f.label :first_name %>
+                    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control", id: "firstname" %>
+                  </div>
+                  <div class="form-group first">
+                    <%= f.label :last_name %>
+                    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "form-control", id: "lastname" %>
+                  </div>
+                  <div class="form-group first">
+                    <%= f.label :email %>
+                    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", id: "useremail" %>
+                  </div>
+                  <div class="form-group first">
+                    <%= f.label :password %>
+                    <%= f.password_field :password, autocomplete: "new-password", class: "form-control", id: "password" %>
+                  </div>
+                  <div class="form-group last mb-4">
+                    <%= f.label :password_confirmation %>
+                    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", id: "passwordconfirmation" %>
+                  </div>
+                  <%= f.submit "Sign Up", class: "btn btn-block btn-primary" %>
+                <% end %>
+                <span class="d-block text-left my-4 text-muted">&mdash; or sign up with &mdash;</span>
+                <div class="social-login">
+                  <a href="#" class="facebook">
+                    <span><%= fa_icon "facebook" %></span>
+                  </a>
+                  <a href="#" class="twitter">
+                    <span><%= fa_icon "twitter" %></span>
+                  </a>
+                  <a href="#" class="google">
+                    <span><%= fa_icon "google" %></span>
+                  </a>
                 </div>
-                <div class="form-group first">
-                  <%= f.label :email %>
-                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", id: "username" %>
-                </div>
-                <div class="form-group first">
-                  <%= f.label :password %>
-                  <%= f.password_field :password, autocomplete: "new-password", class: "form-control", id: "password" %>
-                </div>
-                <div class="form-group last mb-4">
-                  <%= f.label :password_confirmation %>
-                  <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", id: "passwordconfirmation" %>
-                </div>
-                <%= f.submit "Sign Up", class: "btn btn-block btn-primary" %>
-              <% end %>
-              <span class="d-block text-left my-4 text-muted">&mdash; or sign up with &mdash;</span>
-              <div class="social-login">
-                <a href="#" class="facebook">
-                  <span><%= fa_icon "facebook" %></span>
-                </a>
-                <a href="#" class="twitter">
-                  <span><%= fa_icon "twitter" %></span>
-                </a>
-                <a href="#" class="google">
-                  <span><%= fa_icon "google" %></span>
-                </a>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</body>
+  </body>
 </html>
