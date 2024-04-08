@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: books
@@ -25,6 +27,6 @@ class Book < ApplicationRecord
   has_one_attached :image
 
   def self.search(search)
-    where("title LIKE ?", "%#{search}%")
+    where('title LIKE ?', "%#{search}%")
   end
 end
