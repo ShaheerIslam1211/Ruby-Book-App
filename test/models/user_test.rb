@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -15,7 +17,7 @@
 #  membership_type        :string
 #  image                  :string
 #
-require "test_helper"
+require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   # test "the truth" do

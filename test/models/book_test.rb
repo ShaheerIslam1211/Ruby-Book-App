@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: books
@@ -17,7 +19,7 @@
 #  language       :string
 #  isbn           :string
 #
-require "test_helper"
+require 'test_helper'
 
 class BookTest < ActiveSupport::TestCase
   # test "the truth" do

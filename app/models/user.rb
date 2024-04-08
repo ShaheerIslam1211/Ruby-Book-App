@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -22,6 +24,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  enum membership_type: [:author, :guest, :user, :admin] # Add more membership types as needed
+  enum membership_type: { author: 0, guest: 1, user: 2, admin: 3 } # Add more membership types as needed
   has_one_attached :image
 end

@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-
   skip_before_action :verify_authenticity_token
-   before_action :authenticate_user! 
-   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :set_user, only: %i[show edit update destroy]
 
   def index
     @user = User.all
@@ -12,6 +11,10 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+  end
+
+  def edit
+    @user = User.find(params[:id])
   end
 
   def create
@@ -23,10 +26,6 @@ class UsersController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def edit
-    @user = User.find(params[:id])
   end
 
   def update
@@ -43,6 +42,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :confirmation_password, :image)
+    params.require(:user).permit(:first_name, :last_name, :email, :password,
+                                 :confirmation_password, :image)
   end
 end

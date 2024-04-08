@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_17_174544) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_08_152815) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -73,7 +73,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_17_174544) do
     t.string "description"
     t.string "image"
     t.string "published"
-    t.bigint "author_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "price"
@@ -82,7 +82,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_17_174544) do
     t.string "publisher"
     t.string "language"
     t.string "isbn"
-    t.index ["author_id"], name: "index_books_on_author_id"
+    t.index ["user_id"], name: "index_books_on_user_id"
   end
 
   create_table "books_tags", force: :cascade do |t|
@@ -119,7 +119,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_17_174544) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "book_orders", "users"
-  add_foreign_key "books", "users", column: "author_id"
+  add_foreign_key "books", "users"
   add_foreign_key "books_tags", "books"
   add_foreign_key "books_tags", "tags"
 end
