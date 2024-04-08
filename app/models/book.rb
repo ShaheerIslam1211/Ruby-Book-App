@@ -18,7 +18,7 @@
 #  isbn           :string
 #
 class Book < ApplicationRecord
-  belongs_to :author
+  belongs_to :user
   has_many :books_tags
   has_many :tags, through: :books_tags
 

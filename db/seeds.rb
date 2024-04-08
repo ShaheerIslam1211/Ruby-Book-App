@@ -45,41 +45,44 @@ require 'faker'
 #   isbn: "0987652121"
 # )
 
-# 50.times do |n|
-#   title = Faker::Name.title
-#   last_name = Faker::Name.last_name
-#   email = Faker::Internet.email
-#   password = Faker::Internet.password(min_length: 8, max_length: 20)
-#   Book.create(
-#     title: "Sample Book #{n+1}",
-#     author: "Author #{n+1}",
-#     price: rand(10.0..100.0).round(2),
-#     published_date: Date.today - rand(0..365).days,
-#     genre: "Genre #{n+1}",
-#     publisher: "Publisher #{n+1}",
-#     cover_image: "cover#{n+1}.jpg",
-#     language: "English",
-#     isbn: rand(1000000000..9999999999).to_s
-#   )
-# end
-
-# Create sample books
 50.times do |n|
-  Book.create(
-    title: Faker::Book.title,
-    description: Faker::Lorem.paragraph(sentence_count: 5),
-    # image: "image#{n+1}.jpg",
-    published: Faker::Book.publisher,
-    author_id: n+1,
-    price: Faker::Commerce.price(range: 10.0..100.0),
-    published_date: Faker::Date.between(from: 1.year.ago, to: Date.today),
-    genre: Faker::Book.genre,
-    publisher: Faker::Book.publisher,
+  title = Faker::Book.title
+  last_name = Faker::Name.last_name
+  email = Faker::Internet.email
+  password = Faker::Internet.password(min_length: 8, max_length: 20)
+  user = User.create!(last_name: last_name, email: email, password: password)
+
+  Book.create!(
+    title: "Sample Book #{n+1}",
+    user_id: user.id,
+    price: rand(10.0..100.0).round(2),
+    published_date: Date.today - rand(0..365).days,
+    genre: "Genre #{n+1}",
+    publisher: "Publisher #{n+1}",
+    # cover_image: "cover#{n+1}.jpg",
     language: "English",
-    # author: Faker::Book.author,
-    isbn: Faker::Number.unique.number(digits: 10).to_s
+    isbn: rand(1000000000..9999999999).to_s
   )
 end
+
+
+# Create sample books
+# 50.times do |n|
+#   Book.create(
+#     title: Faker::Book.title,
+#     description: Faker::Lorem.paragraph(sentence_count: 5),
+#     # image: "image#{n+1}.jpg",
+#     published: Faker::Book.publisher,
+#     user_id: Faker::Book.user.id,
+#     price: Faker::Commerce.price(range: 10.0..100.0),
+#     published_date: Faker::Date.between(from: 1.year.ago, to: Date.today),
+#     genre: Faker::Book.genre,
+#     publisher: Faker::Book.publisher,
+#     language: "English",
+#     # user: Faker::Book.author,
+#     isbn: Faker::Number.unique.number(digits: 10).to_s
+#   )
+# end
 
 # For author creation in rails seed 
 
@@ -98,18 +101,20 @@ end
 #   )
 # end
 
-# # Create sample authors
+# # Create sample users
 # 50.times do |n|
 #   first_name = Faker::Name.first_name
 #   last_name = Faker::Name.last_name
 #   email = Faker::Internet.email
 #   password = Faker::Internet.password(min_length: 8, max_length: 20)
 
-#   Author.create(
+#   User.create(
 #     first_name: first_name,
 #     last_name: last_name,
 #     email: email,
-#     password: password
+#     password: password,
+#     password_confirmation: password,
+#     membership_type: 'user'
 #   )
 # end
 
@@ -139,7 +144,7 @@ end
 # end
 
 
-50.times do |n|
-  Tag.create(name: Faker::Lorem.word)
-end
+# 50.times do |n|
+#   Tag.create(name: Faker::Lorem.word)
+# end
 
